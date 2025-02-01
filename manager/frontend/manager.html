@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ticket manager</title>
+    <link rel="stylesheet" href="styles/main.min.css">
+</head>
+<body>
+    <section id="event-popup" style="display: none;">
+        <form action="" class="event-form">
+            <h2>Create New Event</h2>
+            <hr>
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="event-name">
+            <label for="event-database">Event Database:</label>
+            <select name="database" id="database-select">
+
+            </select>
+            <button>Add Event</button>
+            
+            <h2>Create New Database</h2>
+            <hr>
+            <label for="database-name">Database Name:</label>
+            <input type="text" id="database-name" name="database-name">
+            <label for="database-endpoint">Database Endpoint:</label>
+            <input type="text" id="database-endpoint" name="database-endpoint">
+            <button>Add Database</button>
+        </form>
+    </section>
+    <section class="control-panel">
+        <div class="event-manager">
+            <select name="event" id="event-select">
+
+            </select>
+            <button id="new-event">
+                <img src="assets/plus.svg" alt="new">
+            </button>
+        </div>
+        <div class="info"></div>
+    </section>
+</body>
+<script src="manager.js"></script>
+</html>

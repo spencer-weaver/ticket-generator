@@ -1,0 +1,40 @@
+
+### get databases
+GET http://localhost:3000/databases HTTP/1.1
+
+### add a database
+POST http://localhost:3000/add-database HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "myDatabase",
+    "endpoint": "http://localhost:3306"
+}
+
+### remove a database
+POST http://localhost:3000/remove-database HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "myDatabase"
+}
+
+### get events
+GET http://localhost:3000/events HTTP/1.1
+
+### add an event
+POST http://localhost:3000/add-event HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "event",
+    "database": "myDatabase"
+}
+
+### remove an event
+POST http://localhost:3000/remove-event HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "event"
+}
