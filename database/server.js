@@ -1,15 +1,16 @@
 
 const express = require('express');
 const mysql = require('mysql2/promise');
+require('dotenv').config();
 
 const app = express();
 const port = 3001;
 
 // database config
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: '127.0.0.1',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: 'event',
 };
 
