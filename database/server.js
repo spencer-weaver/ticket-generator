@@ -27,6 +27,24 @@ async function initializeDatabase() {
 
         await connection.query(`USE \`${dbConfig.database}\``);
 
+        // create users table
+        await connection.query(`
+            CREATE TABLE IF NOT EXISTS users (
+                user_id INT AUTOINCREMENT PRIMARY KEY,
+                first_name VARCHAR(255),
+                last_name VARCHAR(255),
+                email VARCHAR(255) UNIQUE NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );`);
+
+        // create tables table
+        await connection.query(`CREATE TABLE IF NOT EXISTS tables (
+                table_id INT AUTOINCREMENT PRIMARY KEY,
+                table_number INT NOT NULL,
+                seats INT NOT NULL,
+                seats_taken INT NOT NULL DEFAULT 0
+            );`);
+
         console.log('connected to database');
         return connection;
     } catch (error) {
@@ -44,11 +62,21 @@ async function initializeDatabase() {
         console.log(`ticket generator database listening on port ${port}`);
     })
 
+    // queries
     app.get('/test', async (req, res) => {
         try {
             const [rows] = await connection.execute('SHOW TABLES');
             res.json(rows);
         } catch (error) {
+            res.status(500).json({ error: 'database query failed' });
+        }
+    });
+
+    app.get('/', async (req, res) => {
+        try {
+            const [rows] = await connection.execute('');
+            res.json(rows);
+        } catch {
             res.status(500).json({ error: 'database query failed' });
         }
     });
