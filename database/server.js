@@ -20,7 +20,7 @@ async function initializeDatabase() {
         const connection = await mysql.createConnection({
             host: dbConfig.host,
             user: dbConfig.user,
-            database: dbConfig.password,
+            password: dbConfig.password,
         });
 
         await connection.execute(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.database}\``);
