@@ -11,6 +11,9 @@ app.use(express.json());
 
 const DATA_FILE = './data.json';
 
+// TODO: handle authentication
+// TODO: remove all event information, option to export first.
+
 if (!fs.existsSync(DATA_FILE)) {
     fs.writeFileSync(DATA_FILE, JSON.stringify({ databases: [], events: [] }, null, 4));
 }
@@ -127,8 +130,6 @@ app.post('/remove-event', async (req, res) => {
     if (eventIndex === -1) {
         return res.status(404).json({ error: "event not found." });
     }
-
-    // TODO: remove all event information, option to export first.
 
     // remove the event from the array
     data.events.splice(eventIndex, 1);
