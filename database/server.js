@@ -25,6 +25,8 @@ async function initializeDatabase() {
 
         await connection.execute(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.database}\``);
 
+        await connection.execute(`USE \`${dbConfig.database}\``);
+
         console.log('connected to database');
         return connection;
     } catch (error) {
