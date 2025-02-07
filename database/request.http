@@ -1,0 +1,3 @@
+
+### get tables
+GET http://localhost:3000/databases HTTP/1.1

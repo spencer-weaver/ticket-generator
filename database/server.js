@@ -38,7 +38,7 @@ async function initializeDatabase() {
     const connection = await initializeDatabase();
 
     // start server
-    app.listen(port, () => {
+    app.listen(port, '0.0.0.0', () => {
         console.log(`ticket generator database listening on port ${port}`);
     })
 
@@ -47,7 +47,7 @@ async function initializeDatabase() {
             const [rows] = await connection.execute('SHOW TABLES');
             res.json(rows);
         } catch (error) {
-            res.status(500).json({ error: 'Database query failed' });
+            res.status(500).json({ error: 'database query failed' });
         }
     });
 })();
