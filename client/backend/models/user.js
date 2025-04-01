@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Define the schema for an event
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -26,11 +25,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    emailPreferences: {
+        type: Boolean,
+        required: true
+    },
 }, {
     timestamps: true
 });
 
-// Create a model from the schema
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -1,0 +1,9 @@
+[submodule "manager-auth"]
+	path = manager-auth
+	url = git@github.com:spencer-weaver/auth-server.git
+[submodule "code-auth"]
+	path = code-auth
+	url = git@github.com:spencer-weaver/code-auth-server.git
+[submodule "gmail-server"]
+	path = gmail-server
+	url = git@github.com:spencer-weaver/gmail-server.git

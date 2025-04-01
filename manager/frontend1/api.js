@@ -48,7 +48,7 @@ export async function signup(formData) {
 
 export async function signin(formData) {
     const response = await sendRequest(endpoints.signin, 'POST', formData);
-    if (response.accesstoken) {
+    if (response.accessToken) {
         localStorage.setItem('accessToken', response.accesstoken);
     }
     console.log('signin response:', response);

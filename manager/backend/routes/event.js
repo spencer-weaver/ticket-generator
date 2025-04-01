@@ -169,20 +169,31 @@ router.get('/tables', async (req, res) => {
     }
 })
 
-router.get('/usersData', async (req, res) => {
+router.get('/usersTable', async (req, res) => {
     const eventId = req.query.eventId;
-    if (!eventId) {
-        return res.status(400).json({ error: 'event id is required' });
+    const tableNumber = req.query.tableNumber;
+    if (!eventId || !tableNumber) {
+        return res.status(400).json({ error: 'event id and table number are required' });
     }
     try {
-        // Fetch the event by ID from MongoDB
+        // grab event
         const event = await Event.findById(eventId);
-
         if (!event) {
             return res.status(404).json({ error: 'Event not found' });
         }
-
-        res.json({ usersData: event.usersData });
+        // grab table
+        const table = event.tables.find(t => t.tableNumber === parseInt(tableNumber));
+        if (!table) {
+            return res.status(404).json({ error: 'Table not found in this event' });
+        }
+        // find each user at table
+        const userIds = table.seats
+            .filter(seat => seat.reservedBy)
+            .map(seat => seat.reservedBy);
+        // get user data
+        const usersAtTable = await User.find({ _id: { $in: userIds } });
+        // return users
+        res.json({ users: usersAtTable });
     } catch (err) {
         console.error('Error fetching event:', err);
         res.status(500).json({ error: 'Server error' });

@@ -1,56 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const Event = require('../models/event');
+const User = require('../models/user');
 
 router.post('/create', async (req, res) => {
     try {
-        const { name, numberOfTables, totalCapacity } = req.body;
+        const { accessCode, firstName, lastName, email, dietaryPreferences, emailPreferences } = req.body;
 
-        if (!name || !numberOfTables || !totalCapacity) {
+        if (!accessCode || !firstName || !lastName || !email || !dietaryPreferences || !emailPreferences) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
 
-        // Calculate seats per table and handle rounding
-        const seatsPerTable = Math.floor(totalCapacity / numberOfTables);
-        const extraSeats = totalCapacity % numberOfTables; // Handle remainder
+        const tableNumber = 0;
+        const seatNumber = 0;
 
-        // Create tables with seats inside
-        const tables = [];
-        let seatCounter = 1; // Global seat counter
 
-        for (let i = 1; i <= numberOfTables; i++) {
-            const tableSeatCount = seatsPerTable + (i <= extraSeats ? 1 : 0);
-            const seats = [];
-
-            for (let j = 1; j <= tableSeatCount; j++) {
-                seats.push({
-                    seatNumber: j,
-                    isReserved: false
-                });
-                seatCounter++;
-            }
-
-            tables.push({
-                tableNumber: i,
-                capacity: tableSeatCount,
-                availableSeats: tableSeatCount,
-                seats
-            });
-        }
-
-        const newEvent = new Event({
-            name,
-            numberOfTables,
-            totalCapacity,
-            currentCapacity: 0,
-            tables
+        const newUser = new User({
+            firstName,
+            lastName,
+            email,
+            tableNumber,
+            seatNumber,
+            dietaryPreferences,
+            emailPreferences
         });
 
-        await newEvent.save();
-        res.status(201).json({ message: 'Event created successfully', event: newEvent });
+        await newUser.save();
+        res.status(201).json({ message: 'User created successfully', event: newUser });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Failed to create event' });
+        res.status(500).json({ message: 'Failed to create user' });
     }
 });
 
