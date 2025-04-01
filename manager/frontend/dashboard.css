@@ -1,0 +1,220 @@
+
+:root {
+
+    --primary-color: #1d1d22;
+    --secondary-color: #222233;
+    --highlight-color: #7785ff;
+
+    --background-color: var(--primary-color);
+    --header-color: #1a1a1a;
+    --logout-color: var(--highlight-color);
+    --panel-color: var(--secondary-color);
+    --panel-color-text: var(--primary-color);
+
+    --header-size: 64px;
+    --panel-inset: 6rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+html {
+    background-color: var(--background-color);
+}
+
+header {
+    width: 100%;
+    height: var(--header-size);
+    background-color: var(--header-color);
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 16px
+}
+
+body {
+    background-color: var(--background-color);
+    color: white;
+    height: 100dvh;
+}
+
+#signout-button {
+    border-radius: 4px;
+    padding: 8px;
+    background-color: var(--logout-color);
+}
+
+.panel {
+
+    position: absolute;
+
+    top: calc(var(--header-size) + var(--panel-inset));
+    left: var(--panel-inset);
+    right: var(--panel-inset);
+    bottom: var(--panel-inset);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 24px;
+
+    background-color: var(--panel-color);
+    border-radius: 24px;
+}
+
+.panel .top {
+    width: 100%;
+    text-align: center;
+    background-color: var(--panel-color-text);
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+.panel .info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    height: 20%;
+    background-color: var(--panel-color-text);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.panel .info-panel div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel .mid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.panel .left {
+    margin-top: 4px;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.panel .right {
+    margin-top: 4px;
+    margin-left: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.panel .controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    width: 100%;
+    height: 10%;
+    padding: 16px;
+    background-color: var(--panel-color-text);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.panel .controls button {
+    background-color: var(--highlight-color);
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.panel .tables {
+    position: relative;
+    margin-top: 8px;
+    height: 70%;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--panel-color-text);
+    border-radius: 8px;
+    overflow: scroll;
+}
+
+.panel #tables-scroll {
+    position: absolute;
+    width: calc(100% - 32px);
+}
+
+.panel .users {
+    height: 100%;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--panel-color-text);
+    border-radius: 8px;
+    overflow: scroll;
+}
+
+.panel .table-item {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4px;
+    background-color: #373644;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.panel .below-table-item {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 16px;
+    margin-right: 0;
+    border-radius: 4px;
+}
+
+.panel .seat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    background-color: #373644;
+    padding: 1px;
+    border-radius: 4px;
+}
+
+.panel .table-item div {
+    width: 100%;
+    background-color: #373644;
+}
+
+.panel .table-item div.hidden {
+    display: none;
+}
+
+.panel .tables-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.panel #add-table {
+    position: relative;
+    background-color: var(--highlight-color);
+    padding: 6px;
+    border-radius: 4px;
+}
