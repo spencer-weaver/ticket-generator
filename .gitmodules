@@ -7,3 +7,6 @@
 [submodule "gmail-server"]
 	path = gmail-server
 	url = git@github.com:spencer-weaver/gmail-server.git
+[submodule "manager/frontend"]
+	path = manager/frontend
+	url = git@github.com:spencer-weaver/ticket-manager-frontend.git
