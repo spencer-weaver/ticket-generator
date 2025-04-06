@@ -10,3 +10,6 @@
 [submodule "manager/frontend"]
 	path = manager/frontend
 	url = git@github.com:spencer-weaver/ticket-manager-frontend.git
+[submodule "manager/backend"]
+	path = manager/backend
+	url = git@github.com:spencer-weaver/ticket-manager-backend.git
