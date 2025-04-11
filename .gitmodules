@@ -13,3 +13,6 @@
 [submodule "client/backend"]
 	path = client/backend
 	url = git@github.com:spencer-weaver/ticket-client-backend.git
+[submodule "manager/backend"]
+	path = manager/backend
+	url = git@github.com:spencer-weaver/ticket-manager-backend.git
